@@ -3,8 +3,8 @@ from .forms import FilmsForm, CatForm, ActForm, PerForm, ComForm
 from django.shortcuts import render, HttpResponseRedirect
 
 
-def index_main(request):
-    return render(request, 'appfilmo/index_main.html')
+def accueil(request):
+    return render(request, 'appfilmo/accueil.html')
 
 
 def index(request):
