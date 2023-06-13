@@ -9,8 +9,7 @@ class Films(models.Model):
     categorie = models.ForeignKey('categorie', on_delete=models.CASCADE, default=None)
 
     def __str__(self):
-        chaine = f"{self.titre} réalisé par {self.realisateur} paru le {self.date_sortie}"
-        return chaine
+        return self.titre
 
     def dico(self):
         return {"titre": self.titre, "realisateur": self.realisateur, "date_sortie": self.date_sortie,
@@ -57,7 +56,8 @@ class Personne(models.Model):
         return self.pseudo
 
     def dico(self):
-        return {"pseudo": self.pseudo, "nomprenom": self.nomprenom, "mail": self.mail, "type": self.type, "password": self.password}
+        return {"pseudo": self.pseudo, "nomprenom": self.nomprenom, "mail": self.mail, "type": self.type,
+                "password": self.password}
 
 
 class Commentaire(models.Model):
@@ -71,4 +71,5 @@ class Commentaire(models.Model):
         return self.commentaire
 
     def dico(self):
-        return {"film": self.film, "personne": self.personne, "note": self.note, "commentaire": self.commentaire, "date": self.date}
+        return {"film": self.film, "personne": self.personne, "note": self.note, "commentaire": self.commentaire,
+                "date": self.date}

@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Commentaires</title>
 </head>
 <body>
+<a href="/appfilmo/index_main">Page principale</a>
+<br>
+<a href="/appfilmo/commentaire/formulaire_com">Ajouter un commentaire</a>
+<br>
+<a>Commentaires:</a>
 
+<ol>
+  {% for l in liste %}
+    <li> {{l}}
+        <a href="/appfilmo/commentaire/affiche_commentaire/{{l.id}}/">Affiche</a>
+        <a href="/appfilmo/commentaire/update_com/{{l.id}}/">Mise a jour du commentaire</a>
+        <a href="/appfilmo/commentaire/delete_com/{{l.id}}/">Supprimer le commentaire</a>
+    </li>
+  {% endfor %}
+</ol>
 </body>
 </html>

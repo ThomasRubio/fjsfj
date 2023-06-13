@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Ajouter un commentaire</title>
 </head>
 <body>
-
+    <p>Ajout d'un film</p>
+    <form method="post" action="/appfilmo/commentaire/affichage_com/">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Commenter">
+    </form>
 </body>
 </html>

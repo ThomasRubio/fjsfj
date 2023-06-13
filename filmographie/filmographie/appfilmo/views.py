@@ -250,7 +250,7 @@ def update_per(request, id):
 
 
 def index_com(request):
-    liste = list(models.Films.objects.all())
+    liste = list(models.Commentaire.objects.all())
     return render(request, 'appfilmo/commentaire/index_com.html', {"liste": liste})
 
 
@@ -259,35 +259,35 @@ def formulaire_com(request):
         form = ComForm(request.POST)
         return render(request, "appfilmo/commentaire/formulaire_com.html", {"form": form})
     else:
-        form = FilmsForm()
+        form = ComForm()
         return render(request, 'appfilmo/commentaire/formulaire_com.html', {"form": form})
 
 
 def affichage_com(request):
     if request.method == 'POST':
-        form = FilmsForm(request.POST)
+        form = ComForm(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect("/appfilmo/commentaire/index_com/")
     else:
-        form = FilmsForm()
+        form = ComForm()
     return render(request, 'appfilmo/commentaire/formulaire_com.html', {"form": form})
 
 
 def affiche_commentaire(request, id):
-    films = models.Commentaire.objects.get(pk=id)
-    return render(request, "appfilmo/commentaire/affiche_commentaire.html", {"films": films})
+    commentaire = models.Commentaire.objects.get(pk=id)
+    return render(request, "appfilmo/commentaire/affiche_commentaire.html", {"commentaire": commentaire})
 
 
 def update_com(request, id):
-    com = models.Commentaire.objects.get(pk=id)
-    form = ComForm(com.dico())
-    return render(request, "appfilmo/commentaire/update_form.html", {"form": form, "id": id})
+    commentaire = models.Commentaire.objects.get(pk=id)
+    form = ComForm(commentaire.dico())
+    return render(request, "appfilmo/commentaire/update_form_com.html", {"form": form, "id": id})
 
 
 def update_traitement_com(request, id):
-    film = models.Commentaire.objects.get(pk=id)
-    form = ComForm(request.POST, instance=film)
+    commentaire = models.Commentaire.objects.get(pk=id)
+    form = ComForm(request.POST, instance=commentaire)
     if form.is_valid():
         form.save()
         return HttpResponseRedirect("/appfilmo/commentaire/index_com/")
@@ -296,13 +296,13 @@ def update_traitement_com(request, id):
 
 
 def delete_com(request, id):
-    films = models.Films.objects.get(pk=id)
-    films.delete()
+    commentaire = models.Commentaire.objects.get(pk=id)
+    commentaire.delete()
     return HttpResponseRedirect("/appfilmo/commentaire/index_com/")
 
 
 def update_form_com(request, id):
-    films = models.Commentaire.objects.get(pk=id)
-    form = ComForm(instance=films)
+    commentaire = models.Commentaire.objects.get(pk=id)
+    form = ComForm(instance=commentaire)
     return render(request, "appfilmo/commentaire/update_form_com.html", {"form": form, "id": id})
 

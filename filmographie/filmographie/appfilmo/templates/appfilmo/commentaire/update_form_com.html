@@ -2,9 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Mise à jour du commentaire</title>
 </head>
 <body>
-
+    <p>Mise à jour du commentaire</p>
+    <form method="post" action="/appfilmo/commentaire/update_traitement_com/{{id}}/">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Mettre à jour">
+    </form>
 </body>
 </html>
